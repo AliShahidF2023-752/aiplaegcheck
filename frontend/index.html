@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plagiarism Checker</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔍 Plagiarism Checker</h1>
+            <p class="subtitle">Check your text for plagiarism and AI-generated content</p>
+        </header>
+
+        <main>
+            <section class="input-section">
+                <div class="input-group">
+                    <label for="text-input">Paste your text here:</label>
+                    <textarea 
+                        id="text-input" 
+                        placeholder="Enter or paste your text here to check for plagiarism and AI-generated content..."
+                        rows="10"
+                    ></textarea>
+                </div>
+
+                <div class="file-upload-group">
+                    <label for="pdf-upload">Or upload a PDF file:</label>
+                    <div class="file-input-wrapper">
+                        <input type="file" id="pdf-upload" accept=".pdf">
+                        <span class="file-name" id="file-name">No file chosen</span>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button id="check-btn" class="btn btn-primary">
+                        <span class="btn-icon">✓</span> Check Text
+                    </button>
+                    <button id="rephrase-btn" class="btn btn-secondary" disabled>
+                        <span class="btn-icon">↻</span> Rephrase Text
+                    </button>
+                </div>
+            </section>
+
+            <section id="loading" class="loading-section hidden">
+                <div class="spinner"></div>
+                <p>Analyzing your text...</p>
+            </section>
+
+            <section id="results" class="results-section hidden">
+                <div class="result-card summary-card">
+                    <h2>📋 Summary</h2>
+                    <div id="summary-content" class="summary-content"></div>
+                </div>
+
+                <div class="detailed-results">
+                    <div class="result-card">
+                        <h3>🔎 Plagiarism Check Results</h3>
+                        <div id="plagiarism-results"></div>
+                    </div>
+
+                    <div class="result-card">
+                        <h3>🤖 AI Detection Results</h3>
+                        <div id="ai-results"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="rephrased-section" class="rephrased-section hidden">
+                <div class="result-card">
+                    <h2>✏️ Rephrased Text</h2>
+                    <div id="rephrased-text" class="rephrased-text"></div>
+                    <button id="copy-rephrased" class="btn btn-small">
+                        📋 Copy to Clipboard
+                    </button>
+                </div>
+            </section>
+
+            <section id="error" class="error-section hidden">
+                <div class="error-card">
+                    <h3>⚠️ Error</h3>
+                    <p id="error-message"></p>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Plagiarism Checker MVP - Powered by AI</p>
+        </footer>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+services:
+  plagiarism_checkers:
+    - name: "Copyscape"
+      api_url: "https://api.copyscape.com/check"
+      api_key: "your-copyscape-api-key"
+      enabled: false
+    
+    - name: "Grammarly Plagiarism"
+      api_url: "https://api.grammarly.com/plagiarism"
+      api_key: "your-grammarly-api-key"
+      enabled: false
+
+  ai_detectors:
+    - name: "GPTZero"
+      api_url: "https://api.gptzero.me/v2/predict/text"
+      api_key: "your-gptzero-api-key"
+      enabled: false
+    
+    - name: "Originality.ai"
+      api_url: "https://api.originality.ai/api/v1/scan/ai"
+      api_key: "your-originality-api-key"
+      enabled: false
+
+  rephrasing:
+    - name: "QuillBot"
+      api_url: "https://api.quillbot.com/rephrase"
+      api_key: "your-quillbot-api-key"
+      enabled: false
+    
+    - name: "OpenAI Rephraser"
+      api_url: "openai"
+      api_key: ""
+      enabled: true
+
+openai:
+  api_key: "${OPENAI_API_KEY}"
+  model: "gpt-4"
