@@ -1,4 +1,6 @@
 """FastAPI application with /check and /rephrase endpoints."""
+import io
+
 from fastapi import FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
@@ -66,7 +68,6 @@ async def check_text(
             )
         try:
             content = await file.read()
-            import io
             text = extract_text_from_pdf(io.BytesIO(content))
         except ValueError as e:
             raise HTTPException(status_code=400, detail=str(e))

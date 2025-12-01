@@ -144,10 +144,21 @@ async def rephrase_with_first_enabled(
         )
     
     # Try each service until one succeeds
+    last_result = None
     for service in services:
         rephrased, result = await rephrase_text_with_service(text, service)
+        last_result = result
         if result.success:
             return rephrased, result
     
     # All services failed, return the last error
-    return "", result
+    if last_result is not None:
+        return "", last_result
+    
+    # This should never happen since we check for empty services above
+    return "", ServiceResult(
+        service_name="None",
+        service_type="rephrasing",
+        success=False,
+        error="No rephrasing services available"
+    )
